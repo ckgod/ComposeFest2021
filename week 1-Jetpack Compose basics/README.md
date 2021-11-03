@@ -17,11 +17,11 @@ Git 명령어 또는 [SourceTree](https://www.sourcetreeapp.com/), [GitKraken](h
 
 Compose는 선언적 UI로 기존 View와는 다른 방식을 사용한다. 간략하게 말하면 상태를 UI로 변환하는 방식을 사용한다.
 
-![img1](/Users/ckg/AndroidStudioProjects/ComposeFest2021/week 1-Jetpack Compose basics/image/img1.png)
+![img1](image/img1.png)
 
 UI는 변경할 수 없고 한 번 생성하면 업데이트가 불가능하다. 따라서 앱 상태가 바뀌면 새로운 상태를 새로운 UI로 변환한다.
 
-![img2](/Users/ckg/AndroidStudioProjects/ComposeFest2021/week 1-Jetpack Compose basics/image/img2.png)
+![img2](image/img2.png)
 
 UI전체를 다시 생성하는 과정으로 동기화 문제가 완전히 해결된다. 
 Compose는 매우 지능적이여서 변경되지 않은 요소에 대한 작업은 건너뛴다. 하지만 개념적으로 특정 상태에 맞추어 UI를 새로 생성하는 것과 같다. 코드는 특정 상태에 대한 UI형태를 설명할 뿐이고 생성 방법은 지정하지 않는다.
@@ -30,6 +30,6 @@ Compose는 매우 지능적이여서 변경되지 않은 요소에 대한 작업
 
 11번째 스텝인 커스텀 애니메이션부분에서 coerceAtLeast라는 함수가 나왔다. 이를 지정해주지 않았을 때bouncy 애니메이션이 일어나면  expand된 카드가 접히고 튕기는 과정에서 padding값이 음수로 가면서 앱이 터진다. 이를 방지해주기 위해 최소 padding값을 지정해주는 함수인 것 같다.
 
-![img3](/Users/ckg/AndroidStudioProjects/ComposeFest2021/week 1-Jetpack Compose basics/image/img3.png)
+![img3](image/img3.png)
 
  
