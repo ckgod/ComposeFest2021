@@ -8,6 +8,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -88,7 +89,7 @@ fun Greeting(name: String) {
 
 @Composable
 private fun MyApp(names: List<String> = listOf("World", "Compose")) {
-    var shouldShowingOnboarding by remember {
+    var shouldShowingOnboarding by rememberSaveable {
         mutableStateOf(true)
     }
     if(shouldShowingOnboarding) {
