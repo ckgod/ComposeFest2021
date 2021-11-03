@@ -3,6 +3,9 @@ package com.example.basicscodelab_week1
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.spring
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -63,8 +66,16 @@ private fun Greetings(names : List<String> = List(1000) {"$it"}) {
 
 @Composable // 컴포저블 함수로 인식
 fun Greeting(name: String) {
+    // 여기에 rememberSaveable을 사용하면 아래로 스크롤하고 다시 위로올려도 확장된 상태가 유지된다.
     val expanded = remember { mutableStateOf(false) }
-    val extraPadding = if (expanded.value) 48.dp else 0.dp
+
+    val extraPadding by animateDpAsState(
+        if(expanded.value) 48.dp else 0.dp,
+        animationSpec = spring(
+            dampingRatio = Spring.DampingRatioMediumBouncy,
+            stiffness = Spring.StiffnessLow
+        )
+    )
 
     Surface(
         color = MaterialTheme.colors.primary,
@@ -73,7 +84,8 @@ fun Greeting(name: String) {
         Row(modifier = Modifier.padding(24.dp)) {
             Column(modifier = Modifier
                 .weight(1f)
-                .padding(bottom = extraPadding)) {
+                .padding(bottom = extraPadding.coerceAtLeast(0.dp))) { // coerceAtLeast가 뭘까??
+                // 애니메이션이 진행되면서 패딩이 음수값으로 가는것을 방지함 음수값으로 가버리면 앱터짐
                 Text(text = "Hello,")
                 Text(text = "$name !")
             }
